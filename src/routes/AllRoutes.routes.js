@@ -11,7 +11,54 @@ router.get('/qr', async (req, res) => {
             if (err) {
                 res.status(500).send('Error generando el código QR');
             } else {
-                res.send(`<img src="${url}" alt="QR Code">`);
+                res.send(`
+                    <!DOCTYPE html>
+                    <html lang="es">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Código QR</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                background-color: #f4f4f9;
+                                color: #333;
+                                text-align: center;
+                                padding: 50px;
+                            }
+                            .container {
+                                background-color: #fff;
+                                padding: 20px;
+                                border-radius: 8px;
+                                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                                display: inline-block;
+                            }
+                            h1 {
+                                color: #28a745;
+                                font-size: 24px;
+                                margin-bottom: 20px;
+                            }
+                            img {
+                                max-width: 100%;
+                                height: auto;
+                                border: 2px solid #28a745; /* Añadir borde verde */
+                                border-radius: 5px; /* Esquinas redondeadas */
+                            }
+                            .description {
+                                font-size: 18px;
+                                margin-top: 20px;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="container">
+                            <h1>¡Aquí está tu Código QR!</h1>
+                            <img src="${url}" alt="Código QR">
+                            <p class="description">Escanea el código QR para acceder a la información.</p>
+                        </div>
+                    </body>
+                    </html>
+                `);                
             }
         });
     } else {
