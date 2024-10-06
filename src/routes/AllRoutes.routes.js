@@ -62,13 +62,55 @@ router.get('/qr', async (req, res) => {
             }
         });
     } else {
-        res.send('El código QR no está disponible. El bot ya puede estar autenticado o no se ha generado el QR.');
-    }
+        res.send(`
+                <!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Error de Código QR</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #f4f4f9;
+                            color: #333;
+                            text-align: center;
+                            padding: 50px;
+                        }
+                        .container {
+                            background-color: #fff;
+                            padding: 20px;
+                            border-radius: 8px;
+                            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                            display: inline-block;
+                            max-width: 600px;
+                        }
+                        h1 {
+                            color: #dc3545;
+                            font-size: 24px;
+                            margin-bottom: 20px;
+                        }
+                        p {
+                            font-size: 18px;
+                            margin: 10px 0;
+                        }
+                        .error-icon {
+                            font-size: 50px;
+                            color: #dc3545;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="error-icon">❌</div>
+                        <h1>¡Código QR No Disponible!</h1>
+                        <p>El bot ya puede estar autenticado o no se ha generado el QR.</p>
+                    </div>
+                </body>
+                </html>
+            `);
+            }
 });
-
-/* router.post('/send', async(req, res) => {
-    const {numTo, message} = req.body;
-}) */
 
 router.get('/send_inscription', async(req, res) => {
     console.log(req.query)
