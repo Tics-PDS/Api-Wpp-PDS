@@ -20,6 +20,7 @@ const initializeClient = async () => {
 
     client.on('qr', qr => {
         qrCodeImage = qr;
+        console.log('Código QR generado');
     });
 
     client.on('ready', async() => {
