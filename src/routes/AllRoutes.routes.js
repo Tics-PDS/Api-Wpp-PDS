@@ -1,7 +1,6 @@
-// routes.js
 import { Router } from 'express';
 import qrcode from 'qrcode';
-import { client, qrCodeImage } from '../whatsapp-client.js';
+import { client, qrCodeImage, initializeClient } from '../whatsapp-client.js';
 
 const router = Router();
 

@@ -45,6 +45,6 @@ const initializeClient = async () => {
 };
 setTimeout(() => {
     initializeClient();
-}, 100);
+});
 
-export { client, qrCodeImage };
+export { client, qrCodeImage, initializeClient };
