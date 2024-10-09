@@ -115,10 +115,10 @@ router.get('/send_inscription', async(req, res) => {
     console.log(req.query)
     const {cel, namechildren, nameparent} = req.query
     const idUser = `${cel}@c.us`;
-    const me = `573012643776@c.us`;
+    //const me = `573012643776@c.us`;
     const msg = `Hola *${nameparent}*, te informamos que la inscripción al Campamento Infantil La Brújula Mágica para el menor *${namechildren}*, fue exitosa ✅⛺️`
     try {
-        await client.sendMessage(me, msg);
+        await client.sendMessage(idUser, msg);
         res.send(`
             <!DOCTYPE html>
             <html lang="es">
