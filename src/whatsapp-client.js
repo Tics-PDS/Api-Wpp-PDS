@@ -5,6 +5,7 @@ let qrCodeImage = null;
 let client;
 
 const initializeClient = async () => {
+    console.log("Espere")
     if (client) {
         await client.destroy();
         console.log("Cliente destruido.");
@@ -19,6 +20,7 @@ const initializeClient = async () => {
     });
 
     client.on('qr', qr => {
+        console.log("Cargando...")
         qrCodeImage = qr;
         console.log('Código QR generado');
     });
@@ -47,4 +49,4 @@ setTimeout(() => {
     initializeClient();
 });
 
-export { client, qrCodeImage, initializeClient };
+export { client, qrCodeImage};

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import qrcode from 'qrcode';
-import { client, qrCodeImage, initializeClient } from '../whatsapp-client.js';
+import { client, qrCodeImage } from '../whatsapp-client.js';
 
 const router = Router();
 
@@ -56,8 +56,8 @@ router.get('/qr', async (req, res) => {
                             <p class="description">Escanea el código QR para acceder a la información.</p>
                         </div>
                     </body>
-                    </html>
-                `);                
+                    </html>`
+                );                
             }
         });
     } else {
@@ -106,8 +106,8 @@ router.get('/qr', async (req, res) => {
                         <p>El bot ya puede estar autenticado o no se ha generado el QR.</p>
                     </div>
                 </body>
-                </html>
-            `);
+                </html>`
+            );
             }
 });
 
@@ -115,7 +115,7 @@ router.get('/send_inscription', async(req, res) => {
     console.log(req.query)
     const {cel, namechildren, nameparent} = req.query
     const idUser = `${cel}@c.us`;
-    const me = `573007396419@c.us`;
+    const me = `573012643776@c.us`;
     const msg = `Hola *${nameparent}*, te informamos que la inscripción al Campamento Infantil La Brújula Mágica para el menor *${namechildren}*, fue exitosa ✅⛺️`
     try {
         await client.sendMessage(me, msg);
@@ -182,8 +182,8 @@ router.get('/send_inscription', async(req, res) => {
                     </div>
                 </div>
             </body>
-            </html>
-        `);
+            </html>`
+        );
     } catch (err) {
         res.send(`
             <!DOCTYPE html>
@@ -247,8 +247,8 @@ router.get('/send_inscription', async(req, res) => {
                     </div>
                 </div>
             </body>
-            </html>
-        `);
+            </html>`
+        );
     }    
 })
 export default router;
